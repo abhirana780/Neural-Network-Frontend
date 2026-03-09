@@ -4,7 +4,7 @@
 
 'use strict';
 
-const API = window.location.origin;
+const API = 'https://neural-network-backend.onrender.com';
 
 /* ─── App State ───────────────────────────────────── */
 const state = {
