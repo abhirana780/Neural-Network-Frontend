@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Build Your AI Brain – Neural Networks for MBA Students</title>
+    <meta
+      name="description"
+      content="An interactive educational game that teaches Neural Network basics to MBA students through visual, step-by-step learning levels."
+    />
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- App CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- ═════════════════════════════════════════════
+         TOP BAR
+    ═════════════════════════════════════════════ -->
+    <header class="app-topbar">
+      <div class="app-logo">
+        <div class="logo-icon">🧠</div>
+        <div>
+          <h1 class="app-title">Build Your AI Brain</h1>
+          <p class="app-subtitle">Neural Networks for MBA Students</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═════════════════════════════════════════════
+         BODY LAYOUT  (sidebar + content)
+    ═════════════════════════════════════════════ -->
+    <div class="app-body">
+
+      <!-- LEFT SIDEBAR -->
+      <nav class="sidebar" id="sidebar" role="navigation" aria-label="Level navigation">
+        <div class="sidebar-label">LEVELS</div>
+
+        <div class="sidebar-item level-dot active" id="dot-1" title="Level 1 – Meet the AI Brain">
+          <div class="sdot">1</div>
+          <div class="stext">Meet the Brain</div>
+        </div>
+        <div class="sidebar-connector" id="conn-1"></div>
+
+        <div class="sidebar-item level-dot" id="dot-2" title="Level 2 – Build the Network">
+          <div class="sdot">2</div>
+          <div class="stext">Build Network</div>
+        </div>
+        <div class="sidebar-connector" id="conn-2"></div>
+
+        <div class="sidebar-item level-dot" id="dot-3" title="Level 3 – Forward Propagation">
+          <div class="sdot">3</div>
+          <div class="stext">Forward Prop</div>
+        </div>
+        <div class="sidebar-connector" id="conn-3"></div>
+
+        <div class="sidebar-item level-dot" id="dot-4" title="Level 4 – Activation Functions">
+          <div class="sdot">4</div>
+          <div class="stext">Activation Fn</div>
+        </div>
+        <div class="sidebar-connector" id="conn-4"></div>
+
+        <div class="sidebar-item level-dot" id="dot-5" title="Level 5 – Backpropagation">
+          <div class="sdot">5</div>
+          <div class="stext">Backprop</div>
+        </div>
+        <div class="sidebar-connector" id="conn-5"></div>
+
+        <div class="sidebar-item level-dot" id="dot-6" title="Level 6 – Train Your AI">
+          <div class="sdot">6</div>
+          <div class="stext">Train Your AI</div>
+        </div>
+
+        <div class="sidebar-footer">
+          <div class="sidebar-tip">Click any level to jump</div>
+        </div>
+      </nav>
+
+      <!-- MAIN CONTENT -->
+      <main class="main-content" id="main-content">
+
+      <!-- ═══════════════════════════════════════════════
+       LEVEL 1 – Meet the AI Brain
+  ═══════════════════════════════════════════════ -->
+      <section class="level-card active" id="level-1" aria-label="Level 1">
+        <div class="level-badge">🎮 Level 1</div>
+        <h2 class="level-title">Meet the AI Brain</h2>
+        <p class="level-desc">
+          Artificial Neural Networks are inspired by the human brain. Just like
+          neurons in your brain pass signals to each other, an ANN passes
+          information through layers of digital neurons to make decisions.
+        </p>
+
+        <!-- What is this? -->
+        <div class="step-explainer">
+          <div class="se-title">📖 What is a Neural Network?</div>
+          <p>Imagine you're a sales manager trying to predict whether a new lead will convert into a customer. You look at several things — their <strong>age</strong>, <strong>income</strong>, and <strong>how many times they visited your website</strong>. Then you weigh up all those factors and make a decision.</p>
+          <p>A <strong>Neural Network</strong> does exactly the same thing — automatically, and at scale. It takes raw data (inputs), processes it through layers of "thinking" steps (hidden layers), and produces a final decision (output).</p>
+        </div>
+
+        <!-- Concept Pillars -->
+        <div class="concept-pillars">
+          <div class="pillar input-pillar">
+            <div class="pillar-icon">📥</div>
+            <div class="pillar-title">Input Layer</div>
+            <div class="pillar-desc">
+              Receives raw data — like a form filled by the customer: age, income, website visits.
+            </div>
+          </div>
+          <div class="pillar hidden-pillar">
+            <div class="pillar-icon">🔮</div>
+            <div class="pillar-title">Hidden Layer</div>
+            <div class="pillar-desc">
+              The "thinking" stage. Each neuron weighs the inputs and decides how strongly it should respond.
+            </div>
+          </div>
+          <div class="pillar output-pillar">
+            <div class="pillar-icon">📤</div>
+            <div class="pillar-title">Output Layer</div>
+            <div class="pillar-desc">
+              Gives the final answer — e.g. 78% chance this customer will buy.
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Network Diagram -->
+        <div class="glass-panel">
+          <div class="layer-labels">
+            <span class="layer-label input"
+              ><span class="layer-dot input"></span>Input Layer</span
+            >
+            <span class="layer-label hidden"
+              ><span class="layer-dot hidden"></span>Hidden Layer</span
+            >
+            <span class="layer-label output"
+              ><span class="layer-dot output"></span>Output Layer</span
+            >
+          </div>
+          <canvas
+            id="network-canvas"
+            aria-label="Neural network diagram"
+          ></canvas>
+        </div>
+
+        <div class="concept-story">
+          <div class="cs-title">🏢 Real Business Analogy</div>
+          Think of this as a <strong>smart credit officer</strong> at a bank. The officer receives your <strong>application (Input)</strong>, evaluates your history using judgment and experience <strong>(Hidden Layer)</strong>, and gives you a <strong>loan decision (Output)</strong>. The Neural Network learns to do this automatically — and improves with every application it sees.
+        </div>
+
+        <div class="tip-box">
+          <span class="tip-icon">💡</span>
+          <div>
+            <strong>Key takeaway:</strong> The lines connecting the neurons are called <strong>weights</strong>. They determine how much each input matters. Learning = adjusting these weights until the AI makes good predictions.
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-primary btn-lg" id="btn-l1-next">
+            Next: Build the Network →
+          </button>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+       LEVEL 2 – Build the Neural Network
+  ═══════════════════════════════════════════════ -->
+      <section class="level-card" id="level-2" aria-label="Level 2">
+        <div class="level-badge">🔧 Level 2</div>
+        <h2 class="level-title">Build Your Neural Network</h2>
+        <p class="level-desc">
+          Design a neural network to predict whether a customer will purchase a product. Add hidden neurons to give your AI more processing power!
+        </p>
+
+        <div class="step-explainer">
+          <div class="se-title">ℹ️ What are you doing here?</div>
+          <p>You are <strong>designing the architecture</strong> of your AI. Think of it like building a consulting team:</p>
+          <div class="step-list">
+            <div class="step-list-item">
+              <div class="step-num">1</div>
+              <p><strong>Input neurons (fixed at 3)</strong> — These are your 3 data points: customer age, income, and website visits. You can't change these — your data is fixed.</p>
+            </div>
+            <div class="step-list-item">
+              <div class="step-num">2</div>
+              <p><strong>Hidden neurons (you control this!)</strong> — Each hidden neuron is like an analyst on your team. More analysts = more pattern-finding power. Too few = the AI misses subtle patterns. Too many = AI gets confused (overfits).</p>
+            </div>
+            <div class="step-list-item">
+              <div class="step-num">3</div>
+              <p><strong>Output neuron (fixed at 1)</strong> — One final answer: probability (0–100%) that the customer will buy.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Network Builder -->
+        <div class="glass-panel">
+          <div class="network-builder">
+            <!-- Input Layer -->
+            <div class="layer-column input-col">
+              <div class="layer-col-title">📥 Input Layer</div>
+              <div class="neuron-list">
+                <div class="neuron-chip input">Age</div>
+                <div class="neuron-chip input">Income</div>
+                <div class="neuron-chip input">Visits</div>
+              </div>
+              <div style="margin-top:12px;font-size:12px;color:var(--text-dim)">3 input neurons (fixed)</div>
+            </div>
+
+            <!-- Hidden Layer -->
+            <div class="layer-column hidden-col">
+              <div class="layer-col-title">🔮 Hidden Layer (<span id="hidden-count">2</span>)</div>
+              <div class="neuron-list" id="hidden-neuron-list"></div>
+              <div style="margin-top:16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+                <button class="btn btn-purple btn-sm" id="btn-add-neuron">+ Add Neuron</button>
+                <button class="btn btn-outline btn-sm" id="btn-remove-neuron">− Remove</button>
+              </div>
+            </div>
+
+            <!-- Output Layer -->
+            <div class="layer-column output-col">
+              <div class="layer-col-title">📤 Output Layer</div>
+              <div class="neuron-list">
+                <div class="neuron-chip output">Buy?</div>
+              </div>
+              <div style="margin-top:12px;font-size:12px;color:var(--text-dim)">1 output neuron (fixed)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual Canvas -->
+        <div class="glass-panel">
+          <div style="font-size:13px;color:var(--text-muted);margin-bottom:10px">↓ Live Network Preview — updates as you add/remove neurons</div>
+          <div class="layer-labels">
+            <span class="layer-label input"><span class="layer-dot input"></span>Input</span>
+            <span class="layer-label hidden"><span class="layer-dot hidden"></span>Hidden</span>
+            <span class="layer-label output"><span class="layer-dot output"></span>Output</span>
+          </div>
+          <canvas id="builder-canvas" aria-label="Network builder canvas"></canvas>
+        </div>
+
+        <div class="concept-story">
+          <div class="cs-title">📊 Team Size Analogy</div>
+          Adding neurons is like adding <strong>specialist analysts</strong> to your team. 2 analysts might spot obvious trends, but <strong>4 analysts</strong> can independently detect complex patterns — one might focus on age groups, another on income brackets. The AI learns to use each one optimally.
+        </div>
+
+        <div class="tip-box">
+          <span class="tip-icon">💡</span>
+          <div><strong>Sweet spot:</strong> For this problem (3 inputs, 10 customers), <strong>3–5 hidden neurons</strong> works well. Try different numbers and see how prediction accuracy changes in Level 6!</div>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-outline btn-lg" onclick="goToLevel(1)">← Back</button>
+          <button class="btn btn-primary btn-lg" id="btn-l2-next">Next: Forward Propagation →</button>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+       LEVEL 3 – Forward Propagation
+  ═══════════════════════════════════════════════ -->
+      <section class="level-card" id="level-3" aria-label="Level 3">
+        <div class="level-badge">⚡ Level 3</div>
+        <h2 class="level-title">Forward Propagation Game</h2>
+        <p class="level-desc">
+          Watch your AI brain process a customer's information in real-time. Signals flow from left (Input) → through the middle (Hidden) → to the answer (Output).
+        </p>
+
+        <div class="step-explainer">
+          <div class="se-title">⚡ What is Forward Propagation?</div>
+          <p>Forward propagation is the AI <strong>making a prediction</strong>. It's the equivalent of a manager reviewing a customer file and reaching a conclusion. Here's exactly what happens when you click the button:</p>
+          <div class="step-list">
+            <div class="step-list-item">
+              <div class="step-num">1</div>
+              <p><strong>Customer data enters</strong> — Age, Income &amp; Web Visits are scaled to values between 0 and 1 (normalization) so the AI can process them equally.</p>
+            </div>
+            <div class="step-list-item">
+              <div class="step-num">2</div>
+              <p><strong>Hidden layer activates</strong> — Each hidden neuron multiplies each input by its "weight" (importance), adds them up, and applies the sigmoid function to produce a value 0–1.</p>
+            </div>
+            <div class="step-list-item">
+              <div class="step-num">3</div>
+              <p><strong>Output produced</strong> — The final neuron combines the hidden layer outputs into one number: the <strong>purchase probability %</strong>. Above 50% = predicted buyer.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Customer Profile -->
+        <div id="customer-card-3" class="customer-card">
+          <div class="customer-avatar">👤</div>
+          <div class="customer-info">
+            <h3>Loading customer...</h3>
+            <p>Fetching from backend</p>
+          </div>
+        </div>
+
+        <!-- Network Canvas -->
+        <div class="glass-panel">
+          <div class="layer-labels">
+            <span class="layer-label input"><span class="layer-dot input"></span>Input</span>
+            <span class="layer-label hidden"><span class="layer-dot hidden"></span>Hidden</span>
+            <span class="layer-label output"><span class="layer-dot output"></span>Output</span>
+          </div>
+          <canvas id="forward-canvas" aria-label="Forward propagation animation"></canvas>
+        </div>
+
+        <!-- Hidden layer outputs -->
+        <div class="info-grid" id="hidden-outputs"></div>
+
+        <!-- Probability Display -->
+        <div class="prob-display" id="prob-display" style="display:none">
+          <div class="prob-circle" id="prob-circle">
+            <div class="prob-value" id="prob-value">0%</div>
+            <div class="prob-label">Purchase<br/>Probability</div>
+          </div>
+          <div class="prob-verdict" id="prob-verdict"></div>
+        </div>
+
+        <!-- What happened dynamic box -->
+        <div class="what-happened" id="forward-result"></div>
+
+        <!-- Score -->
+        <div class="scoreboard">
+          <div class="score-item">
+            <div class="score-val gold" id="score-rounds">0</div>
+            <div class="score-lbl">Predictions Made</div>
+          </div>
+          <div class="score-item">
+            <div class="score-val green" id="score-correct">0</div>
+            <div class="score-lbl">Training Steps</div>
+          </div>
+        </div>
+
+        <div class="concept-story">
+          <div class="cs-title">📉 Why does this matter?</div>
+          This is your AI <strong>making a decision with its current knowledge</strong>. At first, it won't be very accurate — its weights are random. But after <strong>training (Level 6)</strong>, it'll make much better predictions. Think of it like a new employee making their first sales call — they improve with experience.
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-outline btn-lg" onclick="goToLevel(2)">← Back</button>
+          <button class="btn btn-outline" id="btn-new-customer">🔄 New Customer</button>
+          <button class="btn btn-primary btn-lg" id="btn-forward">
+            <div class="spinner"></div>
+            <span class="btn-text">⚡ Send Info Through AI Brain</span>
+          </button>
+          <button class="btn btn-success btn-lg" id="btn-l3-next">Next: Activation →</button>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+       LEVEL 4 – Activation Functions
+  ═══════════════════════════════════════════════ -->
+      <section class="level-card" id="level-4" aria-label="Level 4">
+        <div class="level-badge">📈 Level 4</div>
+        <h2 class="level-title">Activation Functions</h2>
+        <p class="level-desc">
+          Every neuron has an <strong>activation function</strong> — a gatekeeper that decides whether the neuron should "fire" or stay quiet. We use the <strong>Sigmoid function</strong>, which squishes any value between 0 and 1.
+        </p>
+
+        <div class="step-explainer">
+          <div class="se-title">🤔 Why does a neuron need an activation function?</div>
+          <p>Without an activation function, the network would just be doing <strong>simple addition and multiplication</strong> — it couldn't learn complex patterns. The activation function introduces <strong>non-linearity</strong>, which means the AI can learn nuanced, curved relationships in data.</p>
+          <p>Think of it like this: a simple rule says "income &gt; \$50k → buy." But reality is more complex — it depends on <strong>age + income + visits all together</strong>. The activation function lets the AI model these complex combinations.</p>
+        </div>
+
+        <div class="concept-pillars" style="grid-template-columns: repeat(2,1fr)">
+          <div class="pillar input-pillar">
+            <div class="pillar-icon">😴</div>
+            <div class="pillar-title">Inactive Neuron</div>
+            <div class="pillar-desc">Low input → output near 0. The neuron doesn't pass the signal forward.</div>
+          </div>
+          <div class="pillar output-pillar">
+            <div class="pillar-icon">🔥</div>
+            <div class="pillar-title">Active Neuron</div>
+            <div class="pillar-desc">Strong input → output near 1. The neuron fires and passes information onward.</div>
+          </div>
+        </div>
+
+        <!-- Sigmoid Curve -->
+        <div class="glass-panel">
+          <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px;font-weight:600">
+            📊 Sigmoid Activation Curve — drag the slider to see the neuron react
+          </div>
+          <canvas id="sigmoid-canvas" aria-label="Sigmoid activation function curve"></canvas>
+        </div>
+
+        <!-- Slider -->
+        <div class="glass-panel">
+          <div class="slider-wrap">
+            <div class="slider-row">
+              <label>Input Signal Strength</label>
+              <input type="range" id="activation-slider" min="-6" max="6" step="0.1" value="0" aria-label="Signal strength slider"/>
+              <div class="slider-val" id="slider-val-display">0.0</div>
+            </div>
+          </div>
+          <div class="info-grid" style="grid-template-columns:repeat(3,1fr)">
+            <div class="info-card">
+              <div class="info-card-icon">📥</div>
+              <div class="info-card-title">Input Signal</div>
+              <div class="info-card-value cyan" id="act-input-val">0.0</div>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🔮</div>
+              <div class="info-card-title">Sigmoid Output</div>
+              <div class="info-card-value purple" id="act-output-val">50.0%</div>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">⚡</div>
+              <div class="info-card-title">Neuron State</div>
+              <div class="info-card-value" style="font-size:13px">
+                <span id="neuron-state-text" style="color:var(--col-accent)">Partially active</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="concept-story">
+          <div class="cs-title">💼 Business Analogy</div>
+          The sigmoid function is like an <strong>employee's confidence threshold</strong>. When evidence is weak (signal near 0), they say "I'm not sure — let me pass a weak signal." When evidence is strong (signal far from 0), they say "I'm confident — full signal ahead!" This prevents small uncertainties from triggering big decisions.
+        </div>
+
+        <div class="tip-box">
+          <span class="tip-icon">💡</span>
+          <div><strong>Drag the slider left or right</strong> and watch the orange dot move on the S-curve. Notice how the output changes slowly in the extremes but rapidly in the middle — that's where the neuron is most "uncertain" and learning happens fastest.</div>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-outline btn-lg" onclick="goToLevel(3)">← Back</button>
+          <button class="btn btn-primary btn-lg" id="btn-l4-next">Next: Backpropagation →</button>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+       LEVEL 5 – Backpropagation
+  ═══════════════════════════════════════════════ -->
+      <section class="level-card" id="level-5" aria-label="Level 5">
+        <div class="level-badge">🔄 Level 5</div>
+        <h2 class="level-title">Backpropagation – AI Learns from Mistakes</h2>
+        <p class="level-desc">
+          When the AI makes a wrong prediction, it doesn't give up — it learns! The error signal travels <strong>backward</strong> through the network, tweaking every connection weight to reduce future errors.
+        </p>
+
+        <div class="step-explainer">
+          <div class="se-title">🔄 What is Backpropagation?</div>
+          <p><strong>Backpropagation</strong> = "Learning from your mistakes, automatically." Here's exactly what happens when you click the button:</p>
+          <div class="step-list">
+            <div class="step-list-item">
+              <div class="step-num">1</div>
+              <p><strong>AI makes a prediction (Forward Pass)</strong> — First the network predicts whether this customer will buy, using the current weights.</p>
+            </div>
+            <div class="step-list-item">
+              <div class="step-num">2</div>
+              <p><strong>Error is measured</strong> — We compare the prediction to the actual answer. A big gap = big error. A small gap = small error.</p>
+            </div>
+            <div class="step-list-item">
+              <div class="step-num">3</div>
+              <p><strong>Error flows backward</strong> — The error signal travels back through the network. Each connection's weight is adjusted slightly to reduce the error. This is called <strong>Gradient Descent</strong>.</p>
+            </div>
+            <div class="step-list-item">
+              <div class="step-num">4</div>
+              <p><strong>New prediction is better</strong> — After the weight update, the network makes a slightly more accurate prediction. Repeat this thousands of times = a trained AI.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Customer Card -->
+        <div id="customer-card-5" class="customer-card">
+          <div class="customer-avatar">👤</div>
+          <div class="customer-info">
+            <h3>Loading customer...</h3>
+            <p>Fetching from backend</p>
+          </div>
+        </div>
+
+        <!-- Backprop Animation Area -->
+        <div id="backprop-anim-box" style="display:none">
+          <div class="error-display" id="error-signal-box">
+            <div class="error-icon" id="backprop-error-icon">⚠️</div>
+            <div class="error-text">
+              <h4 id="backprop-error-title">Mismatch Detected!</h4>
+              <p id="backprop-error-desc"></p>
+            </div>
+            <div style="margin-left:auto;text-align:center">
+              <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px">AI said</div>
+              <div class="score-val purple" id="backprop-pred-val">–</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:8px">Actual</div>
+              <div style="font-size:14px;font-weight:700" id="backprop-actual-val">–</div>
+            </div>
+          </div>
+
+          <!-- Backward Canvas -->
+          <div class="glass-panel">
+            <div style="font-size:13px;color:var(--text-muted);margin-bottom:10px;font-weight:600">
+              ← Error signal traveling BACKWARD through network — adjusting weights
+            </div>
+            <div class="layer-labels" style="flex-direction:row-reverse">
+              <span class="layer-label input"><span class="layer-dot input"></span>Input</span>
+              <span class="layer-label hidden"><span class="layer-dot hidden"></span>Hidden</span>
+              <span class="layer-label output"><span class="layer-dot output"></span>Output</span>
+            </div>
+            <canvas id="backprop-canvas" aria-label="Backpropagation animation"></canvas>
+          </div>
+
+          <!-- Weight changes -->
+          <div id="weight-change-box"></div>
+        </div>
+
+        <!-- What happened -->
+        <div class="what-happened" id="backprop-result"></div>
+
+        <div class="concept-story">
+          <div class="cs-title">💼 Post-Deal Debrief Analogy</div>
+          Backpropagation is like a <strong>post-sales review meeting</strong>. After losing a deal, your team asks: "Where did we go wrong?" Each department (layer) gets feedback and adjusts their approach. The sales strategy improves with every deal — won or lost.
+        </div>
+
+        <div class="tip-box">
+          <span class="tip-icon">💡</span>
+          <div><strong>Watch the Loss numbers:</strong> "Loss Before" measures how wrong the AI was. "Loss After" should be smaller — the AI got a little bit smarter just from this one example!</div>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-outline btn-lg" onclick="goToLevel(4)">← Back</button>
+          <button class="btn btn-outline" id="btn-new-customer-5">🔄 New Customer</button>
+          <button class="btn btn-purple btn-lg" id="btn-backprop">
+            <div class="spinner"></div>
+            <span class="btn-text">🔄 Run Backpropagation</span>
+          </button>
+          <button class="btn btn-success btn-lg" id="btn-l5-next">Next: Train AI →</button>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+       LEVEL 6 – Train Your AI
+  ═══════════════════════════════════════════════ -->
+      <section class="level-card" id="level-6" aria-label="Level 6">
+        <div class="level-badge">🏆 Level 6</div>
+        <h2 class="level-title">Train Your AI – Watch It Improve!</h2>
+        <p class="level-desc">
+          This is where everything comes together. Press <strong>Start Training</strong> and watch your AI go from random guesses to accurate predictions — all by itself.
+        </p>
+
+        <div class="step-explainer">
+          <div class="se-title">🚀 What does "Training" mean?</div>
+          <p>Training is the AI <strong>repeating the learning cycle</strong> (forward prop + backprop) hundreds of times across all customer examples. With each pass through the data, it fine-tunes its weights — getting slightly better each time.</p>
+          <div class="step-list">
+            <div class="step-list-item">
+              <div class="step-num">1</div>
+              <p><strong>Epoch</strong> = one complete pass through all 10 customers. After each epoch, weights are updated and the AI is a little smarter.</p>
+            </div>
+            <div class="step-list-item">
+              <div class="step-num">2</div>
+              <p><strong>Accuracy</strong> = what % of the 10 customers the AI correctly classified ("will buy" or "won't buy"). 100% accuracy means the AI correctly identifies every customer.</p>
+            </div>
+            <div class="step-list-item">
+              <div class="step-num">3</div>
+              <p><strong>The chart</strong> shows how accuracy improves over time. A rising curve = the AI is learning. A flat curve = the AI has hit its limit (may need more data or neurons).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Training config -->
+        <div class="glass-panel">
+          <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:20px">
+            <div>
+              <label style="font-size:13px;color:var(--text-muted);display:block;margin-bottom:6px;font-weight:600">Number of Training Epochs</label>
+              <input type="number" id="epoch-count" value="50" min="10" max="200"/>
+            </div>
+            <div style="font-size:13px;color:var(--text-muted);max-width:360px">
+              💡 <strong>Tip:</strong> 50 epochs is usually enough for this small dataset. Try 100 for even higher accuracy. More epochs = more learning cycles.
+            </div>
+          </div>
+
+          <button class="btn btn-amber btn-lg" id="btn-train">
+            <div class="spinner"></div>
+            <span class="btn-text">🚀 Start Training</span>
+          </button>
+        </div>
+
+        <!-- Progress -->
+        <div class="glass-panel training-progress">
+          <div class="progress-header">
+            <span class="progress-label">📊 Training Accuracy (updates live)</span>
+            <span class="progress-val" id="training-pct">0%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="training-bar" style="width:0%"></div>
+          </div>
+          <div style="font-size:12px;color:var(--text-dim);margin-top:8px">Watch this bar fill up as the AI learns. Each step = one epoch completed.</div>
+        </div>
+
+        <!-- Final Stats -->
+        <div class="scoreboard">
+          <div class="score-item">
+            <div class="score-val gold" style="font-size:36px" id="final-accuracy">–</div>
+            <div class="score-lbl">Final Accuracy</div>
+          </div>
+          <div class="score-item">
+            <div class="score-val purple">6</div>
+            <div class="score-lbl">Levels Completed</div>
+          </div>
+          <div class="score-item">
+            <div class="score-val green">10</div>
+            <div class="score-lbl">Training Samples</div>
+          </div>
+          <div class="score-item">
+            <div class="score-val">3→4→1</div>
+            <div class="score-lbl">Network Architecture</div>
+          </div>
+        </div>
+
+        <!-- Accuracy Chart -->
+        <div class="glass-panel">
+          <div style="font-size:13px;color:var(--text-muted);margin-bottom:6px;font-weight:600">📈 Accuracy Over Training Epochs</div>
+          <div style="font-size:12px;color:var(--text-dim);margin-bottom:10px">Each point on the graph = one epoch. The curve rises as the AI gets smarter. If it flattens near 100%, the AI has fully learned the dataset.</div>
+          <div class="chart-wrap">
+            <canvas id="accuracy-chart" aria-label="Training accuracy chart"></canvas>
+          </div>
+        </div>
+
+        <!-- Dynamic result after training -->
+        <div class="what-happened" id="training-explainer"></div>
+
+        <div class="concept-story">
+          <div class="cs-title">🏢 The MBA Takeaway</div>
+          Training an AI is like <strong>onboarding a new analyst</strong>. On day 1, they make random guesses. But after reviewing <strong>50 historical cases</strong> with feedback on each mistake, they become highly accurate. The more quality examples they study, the better they get — this is exactly what your AI just did.
+        </div>
+
+        <!-- Completion Banner -->
+        <div id="completion-banner" style="display:none;text-align:center;padding:40px 20px;background:linear-gradient(135deg,rgba(16,185,129,0.1),rgba(37,99,235,0.08));border:1px solid rgba(16,185,129,0.3);border-radius:var(--radius-lg);margin-top:24px">
+          <div style="font-size:56px;margin-bottom:16px">🎓</div>
+          <h2 style="font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;color:#10b981;margin-bottom:10px">Congratulations, AI Architect!</h2>
+          <p style="color:var(--text-muted);font-size:15px;max-width:520px;margin:0 auto;line-height:1.7">
+            You've completed <strong style="color:var(--text-primary)">Build Your AI Brain</strong>!<br/>
+            You now understand — in business terms — exactly how a neural network:<br/>
+            <strong style="color:#2563eb">📥 Takes in data</strong> → <strong style="color:#7c3aed">🔮 Processes it</strong> → <strong style="color:#0891b2">📤 Predicts</strong> → <strong style="color:#059669">🔄 Learns from mistakes</strong> → <strong style="color:#d97706">🎯 Gets accurate</strong>
+          </p>
+          <div style="margin-top:20px;font-size:13px;color:var(--text-dim)">Share this with your team — you can now explain AI without a data science degree! 🚀</div>
+        </div>
+
+        <!-- Canvas -->
+        <div class="glass-panel" style="margin-top:24px">
+          <div style="font-size:13px;color:var(--text-muted);margin-bottom:10px;font-weight:600">Your Trained Network Architecture</div>
+          <div class="layer-labels">
+            <span class="layer-label input"><span class="layer-dot input"></span>Input (3)</span>
+            <span class="layer-label hidden"><span class="layer-dot hidden"></span>Hidden (4)</span>
+            <span class="layer-label output"><span class="layer-dot output"></span>Output (1)</span>
+          </div>
+          <canvas id="training-canvas" aria-label="Trained neural network"></canvas>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-outline btn-lg" onclick="goToLevel(5)">← Back</button>
+          <button class="btn btn-success btn-lg" onclick="document.getElementById('completion-banner').style.display='block';document.getElementById('completion-banner').scrollIntoView({behavior:'smooth'});showToast('🏆 You built an AI brain! Well done!')">
+            🏆 Claim Certificate
+          </button>
+          <button class="btn btn-outline btn-lg" onclick="state.completedLevels.clear();state.score={correct:0,wrong:0,rounds:0};state.hiddenNeurons=2;goToLevel(1);showToast('🔄 Restarting from Level 1…')">
+            🔄 Restart Game
+          </button>
+        </div>
+      </section>
+    </div>
+    <!-- #app -->
+
+    <!-- Toast -->
+    <div id="toast" role="alert" aria-live="polite"></div>
+
+      </main><!-- /.main-content -->
+    </div><!-- /.app-body -->
+
+    <!-- App JS -->
+    <script src="js/app.js"></script>
+  </body>
+</html>
